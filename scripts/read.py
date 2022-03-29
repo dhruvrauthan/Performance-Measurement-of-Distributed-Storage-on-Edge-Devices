@@ -7,7 +7,7 @@ profile = ExecutionProfile(
         consistency_level=ConsistencyLevel.ONE
 )
 
-cluster = Cluster(['192.168.122.11', '192.168.122.12', '192.168.122.13'], execu>
+cluster = Cluster(['192.168.122.11', '192.168.122.12', '192.168.122.13'], execution_profiles={EXEC_PROFILE_DEFAULT: profile})
 session = cluster.connect('edgedb')
 
 print("Connected to Database!")
@@ -20,3 +20,4 @@ timeEnd = time.time()
 totalTime = (timeEnd - timeStart)*1000
 print("Total time taken : " + str(round(totalTime, 3)) + "ms")
 print("Average Latency : " + str(round(totalTime/945, 3)) + "ms")
+
