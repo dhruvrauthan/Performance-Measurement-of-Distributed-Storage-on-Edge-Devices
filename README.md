@@ -72,12 +72,20 @@ For example: `ssh edge0@192.168.122.11 -i /home/f20190095/.ssh/id_rsa_benchmark`
 13. Now our Cassandra cluster is up and running, and ready for experiments.
 
 ### Part 3: Network
-1. SSH into the VM
+1. SSH into the VM.
 2. Run `nano delay_setup.sh`
 3. Paste the contents from `scripts/delay_setup` into the previous file.
 4. Exit the editor and run `chmod +x delay_setup.sh`
 5. Run `./delay_setup.sh`
-6. Repeat steps 1-5 for every VM (all edge VMs and endpoint)
-7. 
+6. Repeat steps 1-5 for every VM (all edge VMs and endpoint).
 
 ### Part 4: Endpoint
+1. SSH into the endpoint.
+2. Run `nano write.py`
+3. Paste the contents from `scripts/write.py` into the previous file.
+4. Exit the editor and run `chmod +x write.py`
+5. Repeat steps 1-3 for `scripts/sampledata` as well.
+
+## Experimentation
+1. Run the `scripts/x_node.sh` script where x = 3, 4 or 5
+2. For the output, SSH into the endpoint VM and view the `x_node_rfy.txt`, where x = 3, 4 or 5 and y = the previously set Replication Factor
