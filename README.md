@@ -21,12 +21,12 @@ the effect on the total time taken for a particular request.
     endpoint_cores = 1
     ```
 3. Run `python3 main.py configuration/infra_only.cfg` from the `continuum` directory.
-4. Wait a few minutes for the VMs to be deployed. Note down the ssh commands for the created VMs.
+4. Wait a few minutes for the VMs to be deployed. Note down the SSH commands for the created VMs.
 5. Run `virsh list` to check if the VMs are up and running.
 
 ### Part 2: Cassandra
 
-1. Use one of the previous commands to ssh into an edge VM. 
+1. Use one of the previous commands to SSH into an edge VM. 
 For example: `ssh edge0@192.168.122.11 -i /home/f20190095/.ssh/id_rsa_benchmark`
 2. Run `nano cassandra_setup.sh`
 3. Paste the contents from `scripts/cassandra_setup` into the previous file.
@@ -62,6 +62,22 @@ For example: `ssh edge0@192.168.122.11 -i /home/f20190095/.ssh/id_rsa_benchmark`
 9. Run `sudo service cassandra restart`
 10. Repeat steps 1-9 for each edge node
 11. Run `nodetool status` to check all the nodes are up and communicating with each other.
-12. 
+12. In any 1 node, run the following commands (replace x with the required Replication Factor):
+    ```
+    cqlsh <ip_address_of_any_other_node>
+    CREATE KEYSPACE edgedb WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : x};
+    USE edgedb;
+    CREATE TABLE prizes(id uuid primary key, first_name text, surname text, year int, category text);
+    ```
+13. Now our Cassandra cluster is up and running, and ready for experiments.
 
 ### Part 3: Network
+1. SSH into the VM
+2. Run `nano delay_setup.sh`
+3. Paste the contents from `scripts/delay_setup` into the previous file.
+4. Exit the editor and run `chmod +x delay_setup.sh`
+5. Run `./delay_setup.sh`
+6. Repeat steps 1-5 for every VM (all edge VMs and endpoint)
+7. 
+
+### Part 4: Endpoint
