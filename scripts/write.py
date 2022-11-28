@@ -4,14 +4,11 @@ import json
 import time
 
 profile = ExecutionProfile(
-        consistency_level=ConsistencyLevel.TWO
+        consistency_level=ConsistencyLevel.QUORUM
 )
 
-cluster = Cluster(['192.168.122.11', '192.168.122.12', '192.168.122.13'], execution_profiles={EXEC_PROFILE_DEFAULT: profile})
+cluster = Cluster(['192.168.122.11', '192.168.122.12', '192.168.122.13', '192.168.122.14', '192.168.122.15'], execution_profiles={EXEC_PROFILE_DEFAULT: profile})
 session = cluster.connect('edgedb')
-
-print("Connected to Database!")
-print("Writing Data...")
 
 f = open('sampledata')
 data = json.load(f)
@@ -31,7 +28,5 @@ for i in data['prizes']:
                 session.execute(query, {'firstname': firstname, 'surname': surname, 'year': year, 'category': category})
 timeEnd = time.time()
 totalTime = (timeEnd - timeStart)*1000
-print("Total time taken : " + str(round(totalTime, 3)) + "ms")
-print("Average Latency : " + str(round(totalTime/945, 3)) + "ms")
-
+print(str(round(totalTime/1000, 3)) + "ms")
 
