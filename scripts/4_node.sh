@@ -1,6 +1,4 @@
 #!/bin/bash
-#latencies = "0 10 20 30 40 50 60 70 80 90 100"
-#packetLoss = "0.5 2.5 7.5"
 
 # Loop for all latencies up to 100 (in increments of 10)
 for latency in 10 20 30 40 50 60 70 80 90 100 
