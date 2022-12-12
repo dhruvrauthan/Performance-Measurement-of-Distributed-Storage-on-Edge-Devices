@@ -102,9 +102,9 @@ For example: `ssh edge0@$E0 -i ~/.ssh/id_rsa_benchmark`
 ### Part 4: Endpoint
 1. SSH into the endpoint.
 2. Run `nano write.py`
-3. Paste the contents from `scripts/write.py` into the previous file.
+3. Paste the contents from `scripts/write.py` into the previous file. Make sure to replace the IPs in the Cluster with your own edge VM IPs.
 4. Exit the editor and run `chmod +x write.py`
-5. Repeat steps 1-3 for `scripts/sampledata` as well.
+5. Repeat steps 1-3 for `scripts/dataset` as well.
 
 ## Experimentation
 1. Run the `scripts/x_node.sh` script where x = 3, 4 or 5
