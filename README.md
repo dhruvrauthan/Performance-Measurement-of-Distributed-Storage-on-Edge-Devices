@@ -39,7 +39,7 @@ Note: The IP addresses used for our experiments are 192.168.122.11, 192.168.122.
 ### Part 2: Cassandra
 
 1. Use one of the previous commands to SSH into an edge VM. 
-For example: `ssh edge0@192.168.122.11 -i ~/.ssh/id_rsa_benchmark`
+For example: `ssh edge0@$E0 -i ~/.ssh/id_rsa_benchmark`
 2. Run `nano cassandra_setup.sh`
 3. Paste the contents from `scripts/cassandra_setup` into the previous file.
 4. Exit the editor and run `chmod +x cassandra_setup.sh`
