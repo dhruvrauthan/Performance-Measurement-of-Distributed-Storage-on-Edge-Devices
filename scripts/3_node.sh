@@ -25,5 +25,5 @@ do
                 # SSH into the endpoint VM and write the results into a file
                 ssh endpoint0@$EP -i ~/.ssh/id_rsa_benchmark "echo \$(python3 write.py) >> 3_node_rf$RF.txt; exit;"
         done    
-        ssh endpoint0@192.168.122.16 -i /home/f20190095/.ssh/id_rsa_benchmark "echo >> 3_node_rf$RF.txt; exit;"
+        ssh endpoint0@$EP -i ~/.ssh/id_rsa_benchmark "echo >> 3_node_rf$RF.txt; exit;"
 done
