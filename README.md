@@ -23,8 +23,18 @@ the effect on the total time taken for a particular request.
 3. Run `python3 main.py configuration/infra_only.cfg` from the `continuum` directory.
 4. Wait a few minutes for the VMs to be deployed. Note down the SSH commands and IPs for the created VMs. 
 5. Run `virsh list` to check if the VMs are up and running.
+6. Run `nano ~/.bashrc`
+7. At the end of the file, add the variables for the VM IP addresses and replace the IP addresses with the ones you noted down earlier:
+    ```
+    export E0="<edge0_ip_address>"
+    export E1="<edge1_ip_address>"
+    export E2="<edge2_ip_address>"
+    export E3="<edge3_ip_address>"
+    export E4="<edge4_ip_address>"
+    export EP="<endpoint_ip_address>"
+    ```
 
-Note: The IP addresses used for our experiments are 192.168.122.11, 192.168.122.12, 192.168.122.13, 192.168.122.14, 192.168.122.15. These may be different according to your network configuration. You may substitute the IP addresses in the following commands accordingly.
+Note: The IP addresses used for our experiments are 192.168.122.11, 192.168.122.12, 192.168.122.13, 192.168.122.14, 192.168.122.15, 192.168.122.16. These may be different according to your network configuration. You may substitute the IP addresses in the following commands accordingly.
 
 ### Part 2: Cassandra
 
