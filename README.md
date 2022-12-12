@@ -1,4 +1,4 @@
-# Edge-Cassandra
+# Performance Measurement of Distributed Storage on Edge Devices
 
 This repository is used to analyze Cassandra’s performance in different networks. 
 We vary Cassandra’s attributes and the overall conditions in each network to simulate a real-world scenario and study 
@@ -21,13 +21,15 @@ the effect on the total time taken for a particular request.
     endpoint_cores = 1
     ```
 3. Run `python3 main.py configuration/infra_only.cfg` from the `continuum` directory.
-4. Wait a few minutes for the VMs to be deployed. Note down the SSH commands for the created VMs.
+4. Wait a few minutes for the VMs to be deployed. Note down the SSH commands and IPs for the created VMs. 
 5. Run `virsh list` to check if the VMs are up and running.
+
+Note: The IP addresses used for our experiments are 192.168.122.11, 192.168.122.12, 192.168.122.13, 192.168.122.14, 192.168.122.15. These may be different according to your network configuration. You may substitute the IP addresses in the following commands accordingly.
 
 ### Part 2: Cassandra
 
 1. Use one of the previous commands to SSH into an edge VM. 
-For example: `ssh edge0@192.168.122.11 -i /home/f20190095/.ssh/id_rsa_benchmark`
+For example: `ssh edge0@192.168.122.11 -i ~/.ssh/id_rsa_benchmark`
 2. Run `nano cassandra_setup.sh`
 3. Paste the contents from `scripts/cassandra_setup` into the previous file.
 4. Exit the editor and run `chmod +x cassandra_setup.sh`
