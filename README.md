@@ -33,6 +33,7 @@ the effect on the total time taken for a particular request.
     export E4="<edge4_ip_address>"
     export EP="<endpoint_ip_address>"
     ```
+8. Run `source ~/.bashrc`
 
 Note: The IP addresses used for our experiments are 192.168.122.11, 192.168.122.12, 192.168.122.13, 192.168.122.14, 192.168.122.15, 192.168.122.16. These may be different according to your network configuration. You may substitute the IP addresses in the following commands accordingly.
 
@@ -82,6 +83,13 @@ For example: `ssh edge0@$E0 -i ~/.ssh/id_rsa_benchmark`
     CREATE TABLE prizes(id uuid primary key, first_name text, surname text, year int, category text);
     ```
 13. Now our Cassandra cluster is up and running, and ready for experiments.
+14. Exit out of the VM
+15. Run `nano ~/.bashrc`
+16. At the end of the file, replace x with the replicatin factor used above:
+    ```
+    export RF="x"
+    ```
+17. Run `source ~/.bashrc`
 
 ### Part 3: Network
 1. SSH into the VM.
